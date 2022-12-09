@@ -1,0 +1,52 @@
+[
+  {
+    "chargerId": "4324203423",
+    "portId": "2320143",
+    "chargerOwner": "user"
+  },
+  {
+    "chargerId": "4322423423",
+    "portId": "232143",
+    "chargerOwner": "Max Kanat-Alexander"
+  },
+  {
+    "chargerId": "4322423423",
+    "portId": "232143",
+    "chargerOwner": "Why The Lucky Stiff"
+  },
+  {
+    "chargerId": "43242324323",
+    "portId": "2321423",
+    "chargerOwner": "Kent Beck"
+  },
+  {
+    "chargerId": "43241233423",
+    "portId": "2321143",
+    "chargerOwner": "Edward V. Berard"
+  },
+  {
+    "chargerId": "4324323423",
+    "portId": "2323143",
+    "chargerOwner": "Alan Kay"
+  },
+  {
+    "chargerId": "4324234423",
+    "portId": "2324143",
+    "chargerOwner": "C.A.R. Hoare"
+  },
+  {
+    "chargerId": "4324253423",
+    "portId": "2325143",
+    "chargerOwner": "David Thomas"
+  },
+  {
+    "chargerId": "4324236423",
+    "portId": "2362143",
+    "chargerOwner": "Donald Knuth"
+  },
+  {
+    "chargerId": "4324234723",
+    "portId": "2321743",
+    "chargerOwner": "Lernantino"
+  }
+]

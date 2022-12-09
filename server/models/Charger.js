@@ -2,6 +2,12 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const chargerSchema = new Schema({
+  chargerOwner: { //username
+    type: String,
+    required,
+    unique: true,
+    trim: true,
+  },
   chargerId: {
     type: String,
     required,
