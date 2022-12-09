@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Charger } = require('../models');
 const { signToken } = require('../utils/auth');
+const { status } = require('../utils/ocppApi');
 
 const resolvers = {
   Query: {
@@ -23,6 +24,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    chargerStatus: async (parent, args, context) => {
+      if (context.user) {
+        // let user = User.findOne({ _id: context.user._id }).populate('chargers');
+        // console.log(context.user.charger);
+        // console.log(user.chargers.chargerId, user.chargers.portId)
+        // console.log(user)
+        // return status(user.chargers[0].chargerId, user.chargers[0].portId)
+        return status(process.env.TEST_STATION,portId = process.env.TEST_PORT); //hard coded for now 
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -32,7 +44,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).populate('chargers');
 
       if (!user) {
         throw new AuthenticationError('No user found with this email address');

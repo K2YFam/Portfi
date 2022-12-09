@@ -17,6 +17,12 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type chargerStatus {
+    stationStatus: Boolean
+    activeSession: Boolean
+    activeSessionId: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -28,6 +34,7 @@ const typeDefs = gql`
     chargers(username: String): [Charger]
     charger(id: ID!): Charger
     me: User
+    chargerStatus: chargerStatus
   }
 
   type Mutation {
