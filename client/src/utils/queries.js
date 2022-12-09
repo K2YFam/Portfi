@@ -6,9 +6,11 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      chargers {
         _id
-        thoughtText
+        chargerOwner
+        chargerId
+        portId
         createdAt
       }
     }
@@ -49,10 +51,11 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      chargers {
         _id
-        thoughtText
-        thoughtAuthor
+        chargerOwner
+        chargerId
+        portId
         createdAt
       }
     }
