@@ -4,13 +4,13 @@ const dateFormat = require('../utils/dateFormat');
 const chargerSchema = new Schema({
   chargerOwner: { //username
     type: String,
-    required,
+    required: true,
     unique: true,
     trim: true,
   },
   chargerId: {
     type: String,
-    required,
+    required: true,
     trim: true,
   },
   portId: {

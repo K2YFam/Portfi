@@ -11,7 +11,7 @@ db.once('open', async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < chargerSeeds.length; i++) {
-      const { _id, chargerId } = await Charger.create(chargerSeeds[i]);
+      const { _id, chargerOwner } = await Charger.create(chargerSeeds[i]);
       const user = await User.findOneAndUpdate(
         { username: chargerOwner },
         {
