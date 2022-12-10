@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Charger } = require('../models');
 const { signToken } = require('../utils/auth');
-const { status, stopCharging, startCharging } = require('../utils/ocppApi');
+const { status, stopCharging, startCharging, setPower } = require('../utils/ocppApi');
 
 const resolvers = {
   Query: {
@@ -77,7 +77,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
     removeCharger: async (parent, { id }, context) => {
       if (context.user) {
         const charger = await Charger.findOneAndDelete({
@@ -95,6 +94,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+
     stopCharging: async (parent, { activeSessionId }, context) => {
       if (context.user) {
           
@@ -102,7 +102,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
     startCharging: async (parent, { userId, portId, chargingLimit = 85 }, context) => { //default 85
       if (context.user) {
           
@@ -110,8 +109,13 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
-
+    setPower: async (parent, { unit, limit, activeSessionId }, context) => {
+      if (context.user) {
+          
+        return setPower(unit, limit, activeSessionId); 
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

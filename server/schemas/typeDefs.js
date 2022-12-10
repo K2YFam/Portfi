@@ -19,9 +19,11 @@ const typeDefs = gql`
 
   type chargerStatus {
     stationStatus: Boolean
-    maxAmp: Int
+    maxCurrent: Int
     activeSession: Boolean
     activeSessionId: String
+    current: Float
+    power: Float
   }
 
   type stopCharging {
@@ -32,6 +34,12 @@ const typeDefs = gql`
     response: Boolean
     activeSessionId: String
     actualChargingLimit: Int
+  }
+
+  type setPower {
+    response: Boolean
+    actualPowerLimit: Int
+    actualPowerLimitUnit: String
   }
 
   type Auth {
@@ -55,6 +63,7 @@ const typeDefs = gql`
     removeCharger(id: ID!): Charger
     stopCharging(activeSessionId: String!): stopCharging
     startCharging(userId: String!, portId: String!, chargingLimit: Int): startCharging
+    setPower(unit: String!, limit: Int!, activeSessionId: String!): setPower
   }
 `;
 
