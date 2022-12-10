@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Charger } = require('../models');
 const { signToken } = require('../utils/auth');
-const { status } = require('../utils/ocppApi');
+const { status, stopCharging, startCharging } = require('../utils/ocppApi');
 
 const resolvers = {
   Query: {
@@ -31,7 +31,7 @@ const resolvers = {
         // console.log(user.chargers.chargerId, user.chargers.portId)
         // console.log(user)
         // return status(user.chargers[0].chargerId, user.chargers[0].portId)
-        return status(process.env.TEST_STATION,portId = process.env.TEST_PORT); //hard coded for now 
+        return status(process.env.TEST_STATION, portId = process.env.TEST_PORT); //hard coded for now 
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -63,8 +63,8 @@ const resolvers = {
     addCharger: async (parent, { chargerId, portId }, context) => {
       if (context.user) {
         const charger = await Charger.create({
-          chargerId,
-          portId,
+          chargerId: process.env.TEST_STATION, //adding the test charger for now
+          portId: portId = process.env.TEST_PORT, //addubg test port for now
           chargerOwner: context.user.username,
         });
 
@@ -93,7 +93,25 @@ const resolvers = {
         return charger;
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+
+    stopCharging: async (parent, { activeSessionId }, context) => {
+      if (context.user) {
+          
+        return stopCharging(activeSessionId);
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    startCharging: async (parent, { userId, portId, chargingLimit = 85 }, context) => { //default 85
+      if (context.user) {
+          
+        return startCharging(process.env.TEST_ADMIN, portId = process.env.TEST_PORT, chargingLimit); //hardcoded for now
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+
   },
 };
 
