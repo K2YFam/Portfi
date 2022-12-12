@@ -40,17 +40,13 @@ export const ADD_THOUGHT = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+  mutation AddCharger($chargerId: String!, $portId: String!) {
+    addCharger(chargerId: $chargerId, portId: $portId) {
       _id
-      thoughtText
-      thoughtAuthor
+      chargerOwner
+      chargerId
+      portId
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;

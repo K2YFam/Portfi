@@ -2,8 +2,13 @@ import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import ThoughtForm from '../components/ThoughtForm';
-import ThoughtList from '../components/ThoughtList';
+// import ThoughtForm from '../components/ThoughtForm';
+// import ThoughtList from '../components/ThoughtList';
+
+import ChargerInfo from '../components/ChargerInfo';
+import AddCharger from '../components/AddCharger';
+import DeleteCharger from '../components/DeleteCharger';
+
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -43,21 +48,25 @@ const Profile = () => {
         </h2>
 
         <div className="col-12 col-md-10 mb-5">
+          <ChargerInfo />
+          <AddCharger />
+          <DeleteCharger />
+          {/* 
           <ThoughtList
-            thoughts={user.thoughts}
+            thoughts={user.chargers}
             title={`${user.username}'s thoughts...`}
             showTitle={false}
             showUsername={false}
-          />
+          /> */}
         </div>
-        {!userParam && (
+        {/* {!userParam && (
           <div
             className="col-12 col-md-10 mb-3 p-3"
             style={{ border: '1px dotted #1a1a1a' }}
           >
             <ThoughtForm />
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
