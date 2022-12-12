@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Charger } = require('../models');
 const { signToken } = require('../utils/auth');
+const { status, stopCharging, startCharging, setPower } = require('../utils/ocppApi');
 
 const resolvers = {
   Query: {
@@ -23,6 +24,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    chargerStatus: async (parent, args, context) => {
+      if (context.user) {
+        // let user = User.findOne({ _id: context.user._id }).populate('chargers');
+        // console.log(context.user.charger);
+        // console.log(user.chargers.chargerId, user.chargers.portId)
+        // console.log(user)
+        // return status(user.chargers[0].chargerId, user.chargers[0].portId)
+        return status(process.env.TEST_STATION, portId = process.env.TEST_PORT); //hard coded for now 
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 
   Mutation: {
@@ -32,7 +44,7 @@ const resolvers = {
       return { token, user };
     },
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ email }).populate('chargers');
 
       if (!user) {
         throw new AuthenticationError('No user found with this email address');
@@ -51,8 +63,8 @@ const resolvers = {
     addCharger: async (parent, { chargerId, portId }, context) => {
       if (context.user) {
         const charger = await Charger.create({
-          chargerId,
-          portId,
+          chargerId: process.env.TEST_STATION, //adding the test charger for now
+          portId: portId = process.env.TEST_PORT, //addubg test port for now
           chargerOwner: context.user.username,
         });
 
@@ -65,7 +77,6 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-
     removeCharger: async (parent, { id }, context) => {
       if (context.user) {
         const charger = await Charger.findOneAndDelete({
@@ -81,7 +92,30 @@ const resolvers = {
         return charger;
       }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    },
+
+
+    stopCharging: async (parent, { activeSessionId }, context) => {
+      if (context.user) {
+          
+        return stopCharging(activeSessionId);
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    startCharging: async (parent, { userId, portId, chargingLimit = 85 }, context) => { //default 85
+      if (context.user) {
+          
+        return startCharging(process.env.TEST_ADMIN, portId = process.env.TEST_PORT, chargingLimit); //hardcoded for now
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    setPower: async (parent, { unit, limit, activeSessionId }, context) => {
+      if (context.user) {
+          
+        return setPower(unit, limit, activeSessionId); 
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
   },
 };
 

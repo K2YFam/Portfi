@@ -17,6 +17,31 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type chargerStatus {
+    stationStatus: Boolean
+    maxCurrent: Int
+    activeSession: Boolean
+    activeSessionId: String
+    current: Float
+    power: Float
+  }
+
+  type stopCharging {
+    response: Boolean
+  }
+
+  type startCharging {
+    response: Boolean
+    activeSessionId: String
+    actualChargingLimit: Int
+  }
+
+  type setPower {
+    response: Boolean
+    actualPowerLimit: Int
+    actualPowerLimitUnit: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -28,6 +53,7 @@ const typeDefs = gql`
     chargers(username: String): [Charger]
     charger(id: ID!): Charger
     me: User
+    chargerStatus: chargerStatus
   }
 
   type Mutation {
@@ -35,6 +61,9 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addCharger(chargerId: String!, portId: String!): Charger
     removeCharger(id: ID!): Charger
+    stopCharging(activeSessionId: String!): stopCharging
+    startCharging(userId: String!, portId: String!, chargingLimit: Int): startCharging
+    setPower(unit: String!, limit: Int!, activeSessionId: String!): setPower
   }
 `;
 
