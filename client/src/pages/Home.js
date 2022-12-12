@@ -1,14 +1,18 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
+// import ThoughtList from '../components/ThoughtList';
+// import ThoughtForm from '../components/ThoughtForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
+import ChargerStatus from '../components/ChargerStatus';
+import StartCharger from '../components/StartCharger';
+import StopCharger from '../components/StopCharger';
+
+import { QUERY_CHARGERS } from '../utils/queries';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
+  const { loading, data } = useQuery(QUERY_CHARGERS);
+  const charger = data?.chargers[0] || []; //looping through later
 
   return (
     <main>
@@ -17,16 +21,22 @@ const Home = () => {
           className="col-12 col-md-10 mb-3 p-3"
           style={{ border: '1px dotted #1a1a1a' }}
         >
-          <ThoughtForm />
+          {/* <ThoughtForm /> */}
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
+            // <ThoughtList
+            //   thoughts={chargers}
+            //   title="Some Feed for Thought(s)..."
+            // />
+            <div>
+            {/* FIX THE DATA QUERY */}
+            <ChargerStatus /> 
+            <StartCharger />
+            <StopCharger />
+            </div>
           )}
         </div>
       </div>

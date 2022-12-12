@@ -29,6 +29,18 @@ query Chargers {
 }
 `;
 
+export const QUERY_CHARGERS = gql`
+query Chargers {
+  chargers {
+    _id
+    chargerOwner
+    chargerId
+    portId
+    createdAt
+  }
+}
+`;
+
 export const QUERY_SINGLE_THOUGHT = gql`
 query Charger($chargerId: ID!) {
   charger(id: $chargerId) {
