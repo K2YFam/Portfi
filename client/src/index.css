@@ -890,6 +890,10 @@ a:hover {
   color: #1bbc9b !important;
 }
 
+.text-yellow {
+  color: yellow !important;
+}
+
 .text-danger {
   color: #e64c66 !important;
 }
@@ -916,6 +920,10 @@ a:hover {
 
 .text-link {
   color: #1b89bc !important;
+}
+
+.text-blue {
+  color: #202fd6 !important;
 }
 
 /* BACKGROUND UTILS */
