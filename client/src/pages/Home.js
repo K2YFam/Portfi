@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
+import MySurvey from '../components/surveyDisplay/surveyone';
 
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
@@ -32,10 +33,13 @@ const Home = () => {
             //   title="Some Feed for Thought(s)..."
             // />
             <div>
-            {/* FIX THE DATA QUERY */}
-            <ChargerStatus /> 
-            <StartCharger />
-            <StopCharger />
+              {/* FIX THE DATA QUERY */}
+              <ChargerStatus />
+              <StartCharger />
+              <div>
+                <MySurvey />
+              </div>
+              <StopCharger />
             </div>
           )}
         </div>
