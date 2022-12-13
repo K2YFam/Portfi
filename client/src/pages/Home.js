@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import MySurvey from '../components/surveyDisplay/surveyone';
+import Auth from '../utils/auth';
 
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
@@ -25,25 +26,27 @@ const Home = () => {
           {/* <ThoughtForm /> */}
         </div>
         <div className="col-12 col-md-8 mb-3">
-          {loading ? (
+          {/* {loading ? (
             <div>Loading...</div>
           ) : (
-            // <ThoughtList
-            //   thoughts={chargers}
-            //   title="Some Feed for Thought(s)..."
-            // />
+             <ThoughtList
+              thoughts={chargers}
+               title="Some Feed for Thought(s)..."
+             />
             <div>
-              {/* FIX THE DATA QUERY */}
-              <ChargerStatus />
+              { FIX THE DATA QUERY } */}
+              {
+                Auth.loggedIn() ? (<div>
+                  <MySurvey />
+                  <ChargerStatus />
               <StartCharger />
-              <div>
-                <MySurvey />
-              </div>
               <StopCharger />
+                </div>): (<h1>please log in</h1>)
+              }
+
             </div>
-          )}
         </div>
-      </div>
+      
     </main>
   );
 };
