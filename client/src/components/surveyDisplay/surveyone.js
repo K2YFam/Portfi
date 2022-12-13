@@ -11,7 +11,7 @@ const SurveyOne = () => {
     const setFinalPage = () => {
         return(
             <main>
-                <h1>PortFi initial setup complete!</h1>
+                <h4>Charging Starting...</h4>
             </main>
         )      
     }

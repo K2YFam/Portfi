@@ -1,6 +1,6 @@
 const json = {
   "title": "Charging Options",
-  "description": "Thank you for using Portfi! The smart charger for your EV needs.",
+  // "description": "Thank you for using PortFi! The smart charger for your EV needs.",
   "logoPosition": "right",
   "focusOnFirstError": false,
   "pages": [
@@ -27,8 +27,8 @@ const json = {
       ]
      }
     ],
-    "title": "Initial Mode Setting",
-    "description": "Please select a charge mode that best fits your current needs."
+    // "title": "Charging Mode Setting",
+    "description": "Please select a charging mode that best fits your current needs."
    },
    {
     "name": "page2",

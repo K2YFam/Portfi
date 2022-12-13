@@ -1,14 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import MySurvey from '../components/surveyDisplay/surveyone';
 import Auth from '../utils/auth';
 
 // import ThoughtList from '../components/ThoughtList';
 // import ThoughtForm from '../components/ThoughtForm';
 
 import ChargerStatus from '../components/ChargerStatus';
-import StartCharger from '../components/StartCharger';
-import StopCharger from '../components/StopCharger';
+
 
 import { QUERY_CHARGERS } from '../utils/queries';
 
@@ -19,13 +17,8 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          {/* <ThoughtForm /> */}
-        </div>
-        <div className="col-12 col-md-8 mb-3">
+
+        <div className="col-12 col-md-9 mb-3">
           {/* {loading ? (
             <div>Loading...</div>
           ) : (
@@ -35,18 +28,18 @@ const Home = () => {
              />
             <div>
               { FIX THE DATA QUERY } */}
-              {
-                Auth.loggedIn() ? (<div>
-                  <MySurvey />
-                  <ChargerStatus />
-              <StartCharger />
-              <StopCharger />
-                </div>): (<h1>please log in</h1>)
-              }
-
+          {
+            Auth.loggedIn() ? (
+            <div>
+              <ChargerStatus />
             </div>
+            ) : (
+            <h4>Welcome to PortFi Charging Assist. <br></br>
+              Please use the navigation links above to log in or sign up.</h4>
+            )
+          }
         </div>
-      
+      </div>
     </main>
   );
 };
