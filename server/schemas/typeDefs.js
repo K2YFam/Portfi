@@ -53,7 +53,7 @@ const typeDefs = gql`
     chargers(chargerOwner: String!): [Charger]
     charger(id: ID!): Charger
     me: User
-    chargerStatus: chargerStatus
+    chargerStatus(chargerId: String!, portId: String!): chargerStatus
   }
 
   type Mutation {

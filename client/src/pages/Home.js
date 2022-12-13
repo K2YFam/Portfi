@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 import ChargerStatus from '../components/ChargerStatus';
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_ME); //find one charger for now
+  const { loading, data } = useQuery(QUERY_ME); //query me includes all user chargers
   const charger = data?.me.chargers[0] || []; //getting one charger for now
 
   return (

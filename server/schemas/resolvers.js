@@ -29,14 +29,17 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    chargerStatus: async (parent, args, context) => {
+    chargerStatus: async (parent, {chargerId, portId}, context) => {
       if (context.user) {
         // let user = User.findOne({ _id: context.user._id }).populate('chargers');
         // console.log(context.user.charger);
         // console.log(user.chargers.chargerId, user.chargers.portId)
         // console.log(user)
         // return status(user.chargers[0].chargerId, user.chargers[0].portId)
-        return status(process.env.TEST_STATION, portId = process.env.TEST_PORT); //hard coded for now 
+        
+        return status(chargerId, portId); 
+
+        // return status(process.env.TEST_STATION, process.env.TEST_PORT); //hard coded for now 
       }
       throw new AuthenticationError('You need to be logged in!');
     },

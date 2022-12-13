@@ -1,19 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
+import { QUERY_CHARGER_STATUS } from '../../utils/queries';
+
 
 import StartCharger from '../StartCharger';
 import StopCharger from '../StopCharger';
 import MySurvey from '../surveyDisplay/surveyone';
 
-const ChargerStatus = ({chargerId, portId}) => {
+const ChargerStatus = ({ chargerId, portId }) => {
 
 
-    
+    const { loading, data } = useQuery(QUERY_CHARGER_STATUS, {
+        variables: { chargerId, portId },
+    });
+    const chargerStatus = data?.chargerStatus || {};
+
+    if (loading) {
+        return <div>Loading charger status...</div>;
+    }
+
     return (
-        
+
         <div>
-            ChargerStatus
-            {`${chargerId}, ${portId}`}
+            {chargerStatus.stationStatus ? "Charger Online" : "Charger Offline"} <br></br>
+            {chargerStatus.activeSession ? "Charging..." : "Charging Not Started"} <br></br>
+            {`Maximum Current is: ${chargerStatus.maxCurrent}A`} <br></br>
+            <br></br>
+
+            {/* {`${chargerId}, ${portId}`} */}
             <StartCharger />
             <StopCharger />
             <MySurvey />

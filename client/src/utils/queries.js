@@ -70,3 +70,18 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_CHARGER_STATUS = gql`
+  query Query($chargerId: String!, $portId: String!) {
+    chargerStatus(chargerId: $chargerId, portId: $portId) {
+      stationStatus
+      maxCurrent
+      activeSession
+      activeSessionId
+      current
+      power
+    }
+  }
+`;
+
+
