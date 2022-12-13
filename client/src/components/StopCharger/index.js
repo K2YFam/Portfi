@@ -3,7 +3,7 @@ import React from 'react';
 const StopCharger = ({ comments = [] }) => {
 
 return (
-    <div>StopCharger</div>
+    <button>StopCharger</button>
 )
 
 //   if (!comments.length) {

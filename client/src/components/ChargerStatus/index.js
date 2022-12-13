@@ -39,7 +39,7 @@ const ChargerStatus = ({ chargerId, portId }) => {
             {"Charging not started"} <br></br>
             {console.log(maxCurrent, activeSessionId)}
             <br></br>
-            <StartCharger chargerId portId activeSessionId maxCurrent={maxCurrent}/>
+            <StartCharger chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
             
             </div>
         )
