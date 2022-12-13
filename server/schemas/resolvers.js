@@ -11,9 +11,14 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('chargers');
     },
-    chargers: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Charger.find(params).sort({ createdAt: -1 });
+    chargers: async (parent, args, context) => {
+      // const params = username ? { username } : {};
+      // return Charger.find(params).sort({ createdAt: -1 });
+      if (context.user) {
+        return Charger.findOne({ chargerOwner: context.user.username });
+      }
+      throw new AuthenticationError('You need to be logged in!');
+
     },
     charger: async (parent, { id }) => {
       return Charger.findOne({ _id: id });
@@ -97,22 +102,22 @@ const resolvers = {
 
     stopCharging: async (parent, { activeSessionId }, context) => {
       if (context.user) {
-          
+
         return stopCharging(activeSessionId);
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     startCharging: async (parent, { userId, portId, chargingLimit = 85 }, context) => { //default 85
       if (context.user) {
-          
+
         return startCharging(process.env.TEST_ADMIN, portId = process.env.TEST_PORT, chargingLimit); //hardcoded for now
       }
       throw new AuthenticationError('You need to be logged in!');
     },
     setPower: async (parent, { unit, limit, activeSessionId }, context) => {
       if (context.user) {
-          
-        return setPower(unit, limit, activeSessionId); 
+
+        return setPower(unit, limit, activeSessionId);
       }
       throw new AuthenticationError('You need to be logged in!');
     },

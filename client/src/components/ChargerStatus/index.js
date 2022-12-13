@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
+
 import StartCharger from '../StartCharger';
 import StopCharger from '../StopCharger';
 import MySurvey from '../surveyDisplay/surveyone';
 
-const ChargerStatus = ({ comments = [] }) => {
+const ChargerStatus = ({chargerId, portId}) => {
 
+
+    
     return (
+        
         <div>
             ChargerStatus
+            {`${chargerId}, ${portId}`}
             <StartCharger />
             <StopCharger />
             <MySurvey />
