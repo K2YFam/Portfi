@@ -5,7 +5,7 @@ import ChargeNormal from '../ChargingModes/ChargeNormal';
 
 import MySurvey from '../surveyTypes/surveytypeone';
 
-const SurveyOne = (chargerId, portId, maxCurrent) => {
+const SurveyOne = ({chargerId, portId, maxCurrent}) => {
     const [showPage, setShowPage] = useState(true);
     
 
@@ -19,7 +19,7 @@ const SurveyOne = (chargerId, portId, maxCurrent) => {
             <main>
                 <h4>Charging Starting...
 
-                    <ChargeNormal />
+                    <ChargeNormal chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
                 </h4>
             </main>
         )      
