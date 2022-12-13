@@ -4,9 +4,7 @@ import MySurvey from '../surveyDisplay/surveyone';
 
 const StartCharger = ({ chargerId, portId, maxCurrent }) => {
     const [goSurvey, setGoSurvey] = useState(false);
-
-
-    function triggerSurvey () {
+    const triggerSurvey = () => {
         setGoSurvey(true)
     }
 
@@ -17,7 +15,6 @@ return (
         goSurvey ? (
             <div>
                 <MySurvey chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
-
             </div>
         ) :
         ''

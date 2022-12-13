@@ -51,3 +51,31 @@ export const ADD_COMMENT = gql`
   }
 `;
 
+export const START_CHARGING = gql`
+  mutation StartCharging($userId: String!, $portId: String!, $chargingLimit: Int) {
+    startCharging(userId: $userId, portId: $portId, chargingLimit: $chargingLimit) {
+      response
+      activeSessionId
+      actualChargingLimit
+    }
+  }
+`
+
+export const SET_POWER = gql`
+  mutation SetPower($limit: Int!, $activeSessionId: String!, $unit: String!) {
+    setPower(limit: $limit, activeSessionId: $activeSessionId, unit: $unit) {
+      response
+      actualPowerLimit
+      actualPowerLimitUnit
+    }
+  }
+`
+
+export const STOP_CHARGING = gql`
+  mutation StopCharging($activeSessionId: String!) {
+    stopCharging(activeSessionId: $activeSessionId) {
+      response
+    }
+  }
+`
+

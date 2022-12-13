@@ -1,8 +1,14 @@
 import React, {useState, useCallback} from "react";
+import { useMutation } from '@apollo/client';
+import ChargeNormal from '../ChargingModes/ChargeNormal';
+
+
 import MySurvey from '../surveyTypes/surveytypeone';
 
-const SurveyOne = () => {
+const SurveyOne = (chargerId, portId, maxCurrent) => {
     const [showPage, setShowPage] = useState(true);
+    
+
     const onCompletePage = useCallback((data) => {
         console.log(data);
         setShowPage(!showPage)
@@ -11,10 +17,15 @@ const SurveyOne = () => {
     const setFinalPage = () => {
         return(
             <main>
-                <h4>Charging Starting...</h4>
+                <h4>Charging Starting...
+
+                    <ChargeNormal />
+                </h4>
             </main>
         )      
     }
+
+
     return(
         <div>
             {
