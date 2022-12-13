@@ -12,6 +12,12 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_ME); //query me includes all user chargers
   const charger = data?.me.chargers[0] || []; //getting one charger for now
 
+  if (loading) {
+    return (
+      <div>Loading user data...</div>
+    )
+  }
+
   return (
     <main>
       <div className="flex-row justify-center">

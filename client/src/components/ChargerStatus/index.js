@@ -5,34 +5,46 @@ import { QUERY_CHARGER_STATUS } from '../../utils/queries';
 
 import StartCharger from '../StartCharger';
 import StopCharger from '../StopCharger';
-import MySurvey from '../surveyDisplay/surveyone';
 
 const ChargerStatus = ({ chargerId, portId }) => {
-
+    // const [activeSessionId, setActiveSessionId] = useState('');
 
     const { loading, data } = useQuery(QUERY_CHARGER_STATUS, {
         variables: { chargerId, portId },
     });
     const chargerStatus = data?.chargerStatus || {};
+    const maxCurrent = chargerStatus.maxCurrent;
+    const activeSessionId = chargerStatus.activeSessionId;
 
     if (loading) {
         return <div>Loading charger status...</div>;
     }
 
-    return (
+    if (!chargerStatus.stationStatus) {
+        return <div>Charger offline</div>;
+    }
 
-        <div>
-            {chargerStatus.stationStatus ? "Charger Online" : "Charger Offline"} <br></br>
-            {chargerStatus.activeSession ? "Charging..." : "Charging Not Started"} <br></br>
-            {`Maximum Current is: ${chargerStatus.maxCurrent}A`} <br></br>
+    if (chargerStatus.activeSession) {
+        return (
+            <div>
+            {`Charging at ${chargerStatus.current} A`} <br></br>
+            {console.log(maxCurrent, activeSessionId)}
+
+            <StopCharger activeSessionId={activeSessionId}/>
+            </div>
+        )
+    } else {
+        return (
+            <div>
+            {"Charging not started"} <br></br>
+            {console.log(maxCurrent, activeSessionId)}
             <br></br>
+            <StartCharger chargerId portId activeSessionId maxCurrent={maxCurrent}/>
+            
+            </div>
+        )
+    }
 
-            {/* {`${chargerId}, ${portId}`} */}
-            <StartCharger />
-            <StopCharger />
-            <MySurvey />
-        </div>
-    )
 
     //   if (!comments.length) {
     //     return <h3>No Comments Yet</h3>;

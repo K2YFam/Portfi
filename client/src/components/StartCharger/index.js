@@ -1,9 +1,16 @@
 import React from 'react';
+import MySurvey from '../surveyDisplay/surveyone';
+
 
 const StartCharger = ({ comments = [] }) => {
 
 return (
-    <div>StartCharger</div>
+    <div>
+        StartCharger
+        <MySurvey />
+
+    </div>
+    
 )
 
 //   if (!comments.length) {
