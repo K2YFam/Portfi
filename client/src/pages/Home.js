@@ -10,7 +10,7 @@ import ChargerStatus from '../components/ChargerStatus';
 
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME); //query me includes all user chargers
-  const charger = data?.me.chargers[0] || []; //getting one charger for now
+  const charger = data?.me.chargers[0] || null; //getting one charger for now
 
   if (loading) {
     return (
@@ -24,12 +24,18 @@ const Home = () => {
         <div className="col-12 col-md-9 mb-3">
           {
             Auth.loggedIn() ? (
-            <div>
-              <ChargerStatus chargerId={charger.chargerId} portId={charger.portId}/>
-            </div>
+              charger ?
+                (
+                  <div>
+                    <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
+                  </div>
+                )
+                : (
+                  window.location.replace('/me') //if not charger, redirect to profile to add charger
+                )
             ) : (
-            <h4>Welcome to PortFi Charging Assist. <br></br>
-              Please use the navigation links above to log in or sign up.</h4>
+              <h4>Welcome to PortFi Charging Assist. <br></br>
+                Please use the navigation links above to log in or sign up.</h4>
             )
           }
         </div>

@@ -10,19 +10,22 @@ import AddCharger from '../components/AddCharger';
 import DeleteCharger from '../components/DeleteCharger';
 
 
-import { QUERY_USER, QUERY_ME } from '../utils/queries';
+import { QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
   const { username: userParam } = useParams();
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+  const { loading, data } = useQuery(QUERY_ME, {
     variables: { username: userParam },
   });
 
 
-  const user = data?.me || data?.user || {};
-  
+  const user = data?.me || {};
+  const charger = data?.me.chargers[0] || null; //getting one charger for now
+  console.log(charger)
+
+
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -47,9 +50,21 @@ const Profile = () => {
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
         <div className="col-12 col-md-10 mb-5">
-          <ChargerInfo />
-          <AddCharger />
-          <DeleteCharger />
+          {charger ?
+            (
+              <div>
+              <ChargerInfo />
+              <DeleteCharger />
+            </div>
+            )
+            : (
+              <div>
+              Please click "Add Charger" button to attach a charger simulator for function testing.
+              <AddCharger />
+            </div>
+            )
+          }
+
           {/* 
           <ThoughtList
             thoughts={user.chargers}

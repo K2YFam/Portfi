@@ -3,7 +3,10 @@ import React from 'react';
 const AddCharger = ({ comments = [] }) => {
 
 return (
-    <div>AddCharger</div>
+    <div>
+        <button>Add Charger</button>
+        
+    </div>
 )
 
 };
