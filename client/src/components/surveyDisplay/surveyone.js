@@ -19,7 +19,7 @@ const SurveyOne = ({chargerId, portId, maxCurrent}) => {
             <main>
                 <h4>Charging Starting...
 
-                    <ChargeNormal chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
+                    
                 </h4>
             </main>
         )      
@@ -31,7 +31,8 @@ const SurveyOne = ({chargerId, portId, maxCurrent}) => {
             {
             showPage?
             <MySurvey showCompletedPage={data=>onCompletePage(data)} /> :
-            setFinalPage()
+            // setFinalPage()
+            <ChargeNormal chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
             }
         </div>
     )

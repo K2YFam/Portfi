@@ -110,10 +110,10 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
-    startCharging: async (parent, { userId, portId, chargingLimit = 85 }, context) => { //default 85
+    startCharging: async (parent, { userId, portId, chargingLimit }, context) => { //default 85
       if (context.user) {
 
-        return startCharging(process.env.TEST_ADMIN, portId = process.env.TEST_PORT, chargingLimit); //hardcoded for now
+        return startCharging(process.env.TEST_ADMIN, process.env.TEST_PORT, chargingLimit); //hardcoded for now
       }
       throw new AuthenticationError('You need to be logged in!');
     },
