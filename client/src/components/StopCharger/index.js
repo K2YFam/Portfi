@@ -25,7 +25,7 @@ const StopCharger = ( {activeSessionId} ) => {
 return (
     <div>
         <button onClick={handleStop}>StopCharger</button>
-        {activeSession ? console.log('charging active') : window.location.replace('/')}
+        {activeSession ? console.log('charging still active') : window.location.replace('/')}
         {/* BETTER WAY TO RETURN BACK TO CHARGING STATUS PAGE? */}
     </div>
     

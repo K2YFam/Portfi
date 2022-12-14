@@ -19,10 +19,11 @@ export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
             const mutationResponse = await startCharger({
                 variables: {
                     userId: 'placeholder',
-                    portId,
+                    portId: 'placeholder',
                     chargingLimit: 80
                 },
             });
+            console.log(mutationResponse.data.startCharging.response)
             mutationResponse.data.startCharging.response ? console.log('charging started') : console.log('unable to stop charging');
             activeSessionId = mutationResponse.data.startCharging.activeSessionId
         } catch (e) {
@@ -46,9 +47,9 @@ export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
 
 
     return (
-        <div>
-            {handleCharge}
-        </div>
+        <button>
+            
+        </button>
     )
 }
 

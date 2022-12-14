@@ -22,7 +22,7 @@ const ChargerStatus = ({ chargerId, portId }) => {
 
     if (!chargerStatus.stationStatus) {
         return <div>Charger offline</div>;
-    }
+    } else 
 
     if (chargerStatus.activeSession) {
         return (
@@ -36,7 +36,7 @@ const ChargerStatus = ({ chargerId, portId }) => {
     } else {
         return (
             <div>
-            {"Charging not started"} <br></br>
+            {"Charger is online. Charging not started"} <br></br>
             {console.log(maxCurrent, activeSessionId)}
             <br></br>
             <StartCharger chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
