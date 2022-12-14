@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MySurvey from '../surveyDisplay/surveyone';
 
-const StartCharger = ({ comments = [] }) => {
+
+const StartCharger = ({ chargerId, portId, maxCurrent }) => {
+    const [goSurvey, setGoSurvey] = useState(false);
+    const triggerSurvey = () => {
+        setGoSurvey(true)
+    }
 
 return (
-    <div>StartCharger</div>
+    <div>
+        <button onClick={triggerSurvey}>Set Charging Mode</button> 
+        {
+        goSurvey ? (
+            <div>
+                <MySurvey chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>
+            </div>
+        ) :
+        ''
+        }
+        
+
+    </div>
+    
 )
 
 //   if (!comments.length) {
