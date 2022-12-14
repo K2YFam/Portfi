@@ -23,8 +23,7 @@ const Profile = () => {
 
   const user = data?.me || {};
   const charger = data?.me.chargers[0] || null; //getting one charger for now
-  console.log(charger)
-
+  const chargerQuantity = charger ? 1 : 0;
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -43,6 +42,10 @@ const Profile = () => {
     );
   }
 
+  const handleControlCharger = () => {
+    window.location.replace('/');
+  }
+
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -53,7 +56,8 @@ const Profile = () => {
           {charger ?
             (
               <div>
-              <ChargerInfo />
+              <ChargerInfo chargerQuantity={chargerQuantity}/>
+              <button onClick={handleControlCharger}>Control Charging</button>
               <DeleteCharger />
             </div>
             )

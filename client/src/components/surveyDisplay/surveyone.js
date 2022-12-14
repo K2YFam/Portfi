@@ -17,18 +17,6 @@ const SurveyOne = ({chargerId, portId, maxCurrent}) => {
         setShowPage(!showPage)
     },[showPage])
 
-    // const setFinalPage = () => {
-    //     return(
-    //         <main>
-    //             <h4>Charging Starting...
-
-                    
-    //             </h4>
-    //         </main>
-    //     )      
-    // }
-
-
     return(
         <div>
             {

@@ -3,6 +3,9 @@ const { User, Charger } = require('../models');
 const { signToken } = require('../utils/auth');
 const { status, stopCharging, startCharging, setPower } = require('../utils/ocppApi');
 
+// USE OCPP API OVERWRITE INSTEAD FOR TESTING PURPOSE ONLY
+// const { status, stopCharging, startCharging, setPower } = require('../utils/ocppApiOverwrite');
+
 const resolvers = {
   Query: {
     users: async () => {
@@ -72,7 +75,7 @@ const resolvers = {
       if (context.user) {
         const charger = await Charger.create({
           chargerId: process.env.TEST_STATION, //adding the test charger for now
-          portId: portId = process.env.TEST_PORT, //addubg test port for now
+          portId: portId = process.env.TEST_PORT, //adding test port for now
           chargerOwner: context.user.username,
         });
 

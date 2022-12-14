@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ChargerInfo = ({ comments = [] }) => {
+const ChargerInfo = ({chargerQuantity}) => {
 
 return (
-    <div>ChargerInfo</div>
+    <div>You have {chargerQuantity} connected charger currently.</div>
 )
 
 };
