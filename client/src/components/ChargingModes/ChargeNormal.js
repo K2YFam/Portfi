@@ -1,26 +1,23 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useMutation } from '@apollo/client';
 import { START_CHARGING, SET_POWER } from '../../utils/mutations';
 
 
 export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
     const [startCharger, { error1 }] = useMutation(START_CHARGING);
-    // const activeSessionId = startCharger.data.startCharging.activeSessionId;
+    useEffect(() => {
+        handleCharge();
+      }, []);
     let activeSessionId;
-    // console.log(startCharger.data, activeSessionId)
-
     const [setPower, { error2 }] = useMutation(SET_POWER);
-    // console.log(setPower.data)
 
     const handleCharge = async (event) => {
-        event.preventDefault();
-        // console.log(activeSessionId)
         try {
             const mutationResponse = await startCharger({
                 variables: {
                     userId: 'placeholder',
                     portId: 'placeholder',
-                    chargingLimit: 80
+                    chargingLimit: 80 //UPDATE FOR EACH MODE
                 },
             });
             console.log(mutationResponse.data.startCharging.response)
@@ -33,24 +30,21 @@ export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
         try {
             const mutationResponse = await setPower({
                 variables: {
-                    limit: maxCurrent / 2, //integer only
+                    limit: maxCurrent / 2, //integer only //UPDATE FOR EACH MODE
                     activeSessionId,
                     unit: 'current'
                 },
             });
             mutationResponse.data.setPower.response ? console.log('power set') : console.log('unable to stop charging')
+            alert(`Started charging at 50% power to 80% battery`); //UPDATE FOR EACH MODE
         } catch (e) {
             console.log(e);
         }
-
+        window.location.replace('/');
+        //BETTER WAY?
     };
 
-
-    return (
-        <button>
-            
-        </button>
-    )
+    return (<div></div>)
 }
 
 
