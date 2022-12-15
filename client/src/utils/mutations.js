@@ -39,6 +39,18 @@ export const ADD_THOUGHT = gql`
   }
 `;
 
+export const ADD_CHARGER = gql`
+  mutation AddCharger($chargerId: String!, $portId: String!) {
+    addCharger(chargerId: $chargerId, portId: $portId) {
+      _id
+      chargerOwner
+      chargerId
+      portId
+      createdAt
+    }
+  }
+`;
+
 export const ADD_COMMENT = gql`
   mutation AddCharger($chargerId: String!, $portId: String!) {
     addCharger(chargerId: $chargerId, portId: $portId) {

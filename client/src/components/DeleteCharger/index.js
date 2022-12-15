@@ -1,9 +1,14 @@
 import React from 'react';
 
-const DeleteCharger = ({ comments = [] }) => {
+const DeleteCharger = () => {
+    function handleClick () {
+        alert('Function coming soon')
+    }
 
 return (
-    <div>DeleteCharger</div>
+    <div>
+        <button onClick={handleClick}>Disconnect Charger</button>
+    </div>
 )
 
 };
