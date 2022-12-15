@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { START_CHARGING, SET_POWER } from '../../utils/mutations';
 
 
-export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
+export default function ChargeTurbo({ chargerId, portId, maxCurrent }) {
     const [startCharger, { error1 }] = useMutation(START_CHARGING);
     useEffect(() => {
         handleCharge();
@@ -17,7 +17,7 @@ export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
                 variables: {
                     userId: 'placeholder',
                     portId: 'placeholder',
-                    chargingLimit: 80 //UPDATE FOR EACH MODE
+                    chargingLimit: 100 //UPDATE FOR EACH MODE
                 },
             });
             console.log(mutationResponse.data.startCharging.response)
@@ -30,13 +30,13 @@ export default function ChargeNormal({ chargerId, portId, maxCurrent }) {
         try {
             const mutationResponse = await setPower({
                 variables: {
-                    limit: maxCurrent / 2, //integer only //UPDATE FOR EACH MODE
+                    limit: maxCurrent, //integer only //UPDATE FOR EACH MODE
                     activeSessionId,
                     unit: 'current'
                 },
             });
             mutationResponse.data.setPower.response ? console.log('power set') : console.log('unable to stop charging')
-            alert(`Started charging at 50% power to 80% battery`); //UPDATE FOR EACH MODE
+            alert(`Started charging at 100% power to 100% battery`); //UPDATE FOR EACH MODE
         } catch (e) {
             console.log(e);
         }
