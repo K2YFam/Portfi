@@ -18,5 +18,8 @@
   },
   "dependencies": {
     "survey-react": "^1.9.63"
+  },
+  "engines": {
+    "node": "16.16.0"
   }
 }
