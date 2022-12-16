@@ -8,6 +8,20 @@ import Auth from '../utils/auth';
 
 import ChargerStatus from '../components/ChargerStatus';
 
+const styles = {
+  welcome: {
+    border: "2px solid #2d3e50",
+    borderRadius: "4px",
+    padding: "10px",
+  },
+  chargerStatus: {
+    border: "2px solid #2d3e50",
+    borderRadius: "4px",
+    padding: "10px",
+    textAlign: "center",
+  }
+}
+
 const Home = () => {
   const { loading, data } = useQuery(QUERY_ME); //query me includes all user chargers
   const charger = data?.me.chargers[0] || null; //getting one charger for now
@@ -21,12 +35,12 @@ const Home = () => {
   return (
     <main>
       <div className="flex-row justify-center">
-        <div className="col-12 col-md-9 mb-3">
+        <div className="col-12 col-md-10 mb-3">
           {
             Auth.loggedIn() ? (
               charger ?
                 (
-                  <div>
+                  <div style={styles.chargerStatus}>
                     <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
                   </div>
                 )
@@ -34,7 +48,7 @@ const Home = () => {
                   window.location.replace('/me') //if not charger, redirect to profile to add charger
                 )
             ) : (
-              <h4>Welcome to PortFi Charging Assist. <br></br>
+              <h4 style={styles.welcome}>Welcome to PortFi Charging Assist. <br></br>
                 Please use the navigation links above to log in or sign up.</h4>
             )
           }

@@ -25,6 +25,16 @@ const Profile = () => {
   const charger = data?.me.chargers[0] || null; //getting one charger for now
   const chargerQuantity = charger ? 1 : 0;
 
+  const styles = {
+    viewProfile: {
+      border: "2px solid #2d3e50",
+      borderRadius: "4px", 
+      textAlign: "center",
+    },
+    ternaryOne: {
+      padding: "10px",
+    }
+  }
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
     return <Navigate to="/me" />;
@@ -36,7 +46,7 @@ const Profile = () => {
 
   if (!user?.username) {
     return (
-      <h4>
+      <h4 style={styles.viewProfile}>
         Please use the navigation links above to log in or sign up.
       </h4>
     );
@@ -47,9 +57,9 @@ const Profile = () => {
   }
 
   return (
-    <div>
+    <div style={styles.viewProfile}>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+        <h2 className="col-12 col-md-12 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
         </h2>
         <div className="col-12 col-md-10 mb-5">
@@ -57,7 +67,7 @@ const Profile = () => {
             (
               <div>
               <ChargerInfo chargerQuantity={chargerQuantity}/>
-              <button onClick={handleControlCharger}>Control Charging</button>
+              <button className="btn btn-lg btn-control m-2" onClick={handleControlCharger}>Control Charging</button>
               <DeleteCharger />
             </div>
             )

@@ -3,7 +3,7 @@ import React from 'react';
 const ChargerInfo = ({chargerQuantity}) => {
 
 return (
-    <div>You have {chargerQuantity} connected charger currently.</div>
+    <h4>You have {chargerQuantity} connected charger currently.</h4>
 )
 
 };
