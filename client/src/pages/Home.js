@@ -38,16 +38,15 @@ const Home = () => {
         <div className="col-12 col-md-10 mb-3">
           {
             Auth.loggedIn() ? (
-              <div></div>
-              // charger ?
-              //   (
-              //     <div style={styles.chargerStatus}>
-              //       <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
-              //     </div>
-              //   )
-              //   : (
-              //     window.location.replace('/me') //if not charger, redirect to profile to add charger
-              //   )
+              charger ?
+                (
+                  <div style={styles.chargerStatus}>
+                    <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
+                  </div>
+                )
+                : (
+                  window.location.replace('/me') //if not charger, redirect to profile to add charger
+                )
             ) : (
               <h4 style={styles.welcome}>Welcome to PortFi Charging Assist. <br></br>
                 Please use the navigation links above to log in or sign up.</h4>
