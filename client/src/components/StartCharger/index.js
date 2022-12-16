@@ -10,7 +10,7 @@ const StartCharger = ({ chargerId, portId, maxCurrent }) => {
 
 return (
     <div>
-        <button onClick={triggerSurvey}>Set Charging Mode</button> 
+        <button className="btn btn-lg btn-charging m-2" onClick={triggerSurvey}>Set Charging Mode</button> 
         {
         goSurvey ? (
             <div>

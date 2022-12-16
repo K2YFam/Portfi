@@ -7,7 +7,7 @@ const DeleteCharger = () => {
 
 return (
     <div>
-        <button onClick={handleClick}>Disconnect Charger</button>
+        <button className="btn btn-lg btn-disconnect m-2" onClick={handleClick}>Disconnect Charger</button>
     </div>
 )
 
