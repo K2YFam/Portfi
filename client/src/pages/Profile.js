@@ -27,8 +27,6 @@ const Profile = () => {
 
   const styles = {
     viewProfile: {
-      border: "2px solid #2d3e50",
-      borderRadius: "4px", 
       textAlign: "center",
     },
     ternaryOne: {
@@ -57,7 +55,7 @@ const Profile = () => {
   }
 
   return (
-    <div style={styles.viewProfile}>
+    <div style={styles.viewProfile} className= "gradient-border">
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-12 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
