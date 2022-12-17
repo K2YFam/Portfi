@@ -15,8 +15,6 @@ const styles = {
     padding: "10px",
   },
   chargerStatus: {
-    border: "2px solid #2d3e50",
-    borderRadius: "4px",
     padding: "10px",
     textAlign: "center",
   }
@@ -40,7 +38,7 @@ const Home = () => {
             Auth.loggedIn() ? (
               charger ?
                 (
-                  <div style={styles.chargerStatus}>
+                  <div style={styles.chargerStatus} className="gradient-border">
                     <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
                   </div>
                 )

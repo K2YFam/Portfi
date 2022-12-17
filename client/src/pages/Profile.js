@@ -73,7 +73,7 @@ const Profile = () => {
             )
             : (
               <div>
-              Please click "Add Charger" button to attach a charger simulator for function testing.
+              <h4>Please click "Add Charger" button to attach a charger simulator for function testing.</h4>
               <AddCharger />
             </div>
             )

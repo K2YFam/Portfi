@@ -35,8 +35,8 @@ const ChargerStatus = ({ chargerId, portId }) => {
         )
     } else {
         return (
-            <div>
-            {"Charger is online. Charging not started"} <br></br>
+            <div><h4>
+            Charger is online. Charging not started</h4><br></br>
             {console.log(maxCurrent, activeSessionId)}
             <br></br>
             <StartCharger chargerId={chargerId} portId={portId} maxCurrent={maxCurrent}/>

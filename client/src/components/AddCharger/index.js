@@ -21,7 +21,7 @@ const AddCharger = ({ comments = [] }) => {
 
 return (
     <div>
-        <button onClick={handleClick}>Add Charger</button>
+        <button className="btn btn-lg btn-addCharger m-2" onClick={handleClick}>Add Charger</button>
     </div>
 )
 
