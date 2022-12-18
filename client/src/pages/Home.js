@@ -38,10 +38,12 @@ const Home = () => {
             Auth.loggedIn() ? (
               charger ?
                 (
-                  <div style={styles.chargerStatus} className="gradient-border">
-                    <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
-                  </div>
-                )
+                  <div>
+                    <div style={styles.chargerStatus} className="gradient-border">
+                      <ChargerStatus chargerId={charger.chargerId} portId={charger.portId} />
+                    </div>
+                    <div className= "plugin"></div>
+                  </div>)
                 : (
                   window.location.replace('/me') //if not charger, redirect to profile to add charger
                 )
