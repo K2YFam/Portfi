@@ -31,7 +31,7 @@ const ChargerStatus = ({ chargerId, portId }) => {
     if (chargerStatus.activeSession) {
         return (
             <div>
-            {`Currently Charging`} <br></br>
+            <h4>Currently Charging</h4> <br></br>
             {console.log(maxCurrent, chargerStatus.current, activeSessionId)}
 
             <StopCharger activeSessionId={activeSessionId}/>
