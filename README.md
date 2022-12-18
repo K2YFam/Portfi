@@ -5,14 +5,15 @@ Home Charging Assist
 A MERN app that lets user pick a EV chargive strategy for the upcoming activites for the day. The ability to remotly turn on and off the ev battery charger from the app.
 
 Deployment: 
-
-## Table of Contents
-NA
+https://portfi-charging.herokuapp.com/
 
 ## Installation
 Node, Express, REACT, Mongoose, GraphQL/Apollo
 
 ## Usage
+For demonstration purpose only. <br />
+Screenshot: <br />
+![alt text](/screenshot.png)
 
 ## Credits
 Yilun Xu, James Phan, Jose Cisneros, Akarim Abdi

@@ -24,7 +24,7 @@ const StopCharger = ( {activeSessionId} ) => {
 
 return (
     <div>
-        <button onClick={handleStop}>StopCharger</button>
+        <button className='btn btn-lg btn-stop m-2' onClick={handleStop}>StopCharger</button>
         {activeSession ? console.log('charging still active') : window.location.replace('/')}
         {/* ADD AN INTERVAL TO SHOW AMP */}
         {/* BETTER WAY TO RETURN BACK TO CHARGING STATUS PAGE? */}
