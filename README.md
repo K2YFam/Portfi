@@ -7,6 +7,9 @@ A MERN app that lets user pick a EV chargive strategy for the upcoming activites
 Deployment: 
 https://portfi-charging.herokuapp.com/
 
+## Demo Video
+https://drive.google.com/file/d/1wH8479cL2jNSZlmd0kOjg_d5xHzgNKmm/view
+
 ## Installation
 Node, Express, REACT, Mongoose, GraphQL/Apollo
 
